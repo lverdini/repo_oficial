@@ -54,19 +54,44 @@ def main():
 # Función que muestra una matriz en consola
 def mostrar_matriz(matriz):
     """Muestra una matriz fila por fila."""
+<<<<<<< Updated upstream
     
 
 
+=======
+    #mostrar matriz
+    matriz_filas = len(matriz)
+    matriz_columnas = len(matriz[0]) if matriz_filas > 0 else 0
+    for i in range(matriz_filas):
+        for j in range(matriz_columnas):
+            print(f"{matriz[i][j]:>3}", end=" ")
+        print()  # Salto de línea después de cada fila
+        
+>>>>>>> Stashed changes
 
 
 # Función que genera una matriz de predicciones random
 def generar_predicciones_random(ratings):
-    """
-    Genera una matriz de predicciones del mismo tamaño que la matriz original.
+    """Genera una matriz de predicciones del mismo tamaño que la matriz original.
+Para cada tema no escuchado (valor 0), genera un score aleatorio entre 1 y 5.
+Para los temas ya calificados, coloca 0 porque no necesitan predicción."""
 
-    Para cada tema no escuchado (valor 0), genera un score aleatorio entre 1 y 5.
-    Para los temas ya calificados, coloca 0 porque no necesitan predicción.
-    """
+    import random
+
+def generar_predicciones_random(ratings):
+    predicciones = []
+
+    for i in range(len(ratings)):          # recorro filas
+        fila_nueva = []
+        for j in range(len(ratings[i])):   # recorro columnas
+            if ratings[i][j] == 0:
+                fila_nueva.append(random.randint(1, 5))
+            else:
+                fila_nueva.append(0)
+        predicciones.append(fila_nueva)
+
+    return predicciones
+
 
 
 # Función que genera una matriz nula (ceros)
